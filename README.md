@@ -1,0 +1,1 @@
+# groceries_manager_ReactNative-Hasure
