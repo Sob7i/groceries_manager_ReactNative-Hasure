@@ -5,18 +5,19 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import ListsScreen from './src/screens/lists-screen';
-import CreatedlistScreen from './src/screens/created-list';
+import CreatedlistScreen from './src/screens/created-list-screen';
+import GlobalState from './src/helpers/global-state'; 
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  // const [text, setText] = React.useState('Type here..');
+  const [global, setGlobal] = React.useState({
+    text: 'Type here..'
+  }); 
   return (
-    // <View style={styles.container}>
-    //   <ListsScreen />
-    //   <Createlist />
-    // </View>
     <NavigationContainer>
-    <>
+    <GlobalState.Provider value={[global, setGlobal]}>
       <StatusBar
         barStyle={Platform.OS === 'ios' ? 'dark-content' : 'light-content'}
       />
@@ -31,25 +32,24 @@ export default function App() {
           },
         }}>
         <Stack.Screen name="Createlist" component={ListsScreen} />
-        {/* <Stack.Screen name="CreatedlistScreen" component={CreatedlistScreen} /> */}
         <Stack.Screen
           name="CreatedlistScreen"
           component={CreatedlistScreen}
-          // options={({route, navigation}) => ({
-          //   title: route.params?.title,
-          //   headerLeft: () => (
-          //     <Button
-          //       // name="chevron-left"
-          //       title='>'
-          //       size={40}
-          //       color="#ffffff"
-          //       onPress={() => navigation.goBack()}
-          //     />
-          //   ),
-          // })}
+          options={({route, navigation}) => ({
+            title: route.params?.title,
+            // headerLeft: () => (
+            //   <Button
+            //     // name="chevron-left"
+            //     title='< back'
+            //     size={40}
+            //     color="#ffffff"
+            //     onPress={() => navigation.goBack()}
+            //   />
+            // ),
+          })}
         />
       </Stack.Navigator>
-    </>
+    </GlobalState.Provider>
   </NavigationContainer>
   );
 }

@@ -1,26 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { StyleSheet, Keyboard, View } from 'react-native';
 import { Text, Button } from 'native-base';
 
 import StyledTextInput from '../elements/text-input';
+import GlobalState from '../helpers/global-state';
 
 export default ({ setListFormOpen, navigation }) => {
-  const [text, setText] = React.useState('Type here..');
+  const [global, setGlobal] = useContext(GlobalState)
+
   const submitMessage = () => {
-    setText('');
+    // setText('');
     // submit(text);
     Keyboard.dismiss();
     navigation.navigate('CreatedlistScreen')
-    console.log('navigation',navigation)
-    console.log('text', text);
   };
   const handleCancelList = () => setListFormOpen(false);
 
   return (
     <View style={styles.container}>
       <StyledTextInput
-        value={text}
-        onChangeText={(txt) => setText(txt)}
+        value={global.text}
+        onChangeText={(txt) => setGlobal({text: txt})}
         onSubmitEditing={submitMessage}
         maxLength={80}
         autoFocus
@@ -29,7 +29,7 @@ export default ({ setListFormOpen, navigation }) => {
       <View style={styles.optionsBtns}>
         <Button
           dark
-          onPress={() => navigation.navigate('CreatedlistScreen')}
+          onPress={submitMessage}
           style={styles.btn}
           accessibilityLabel='Create'
         >
