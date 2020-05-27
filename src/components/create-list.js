@@ -4,7 +4,7 @@ import { View, Button, Text } from 'native-base';
 
 import ListForm from './list-form';
 
-export default () => {
+export default ({ navigation }) => {
   const [islistFormOpen, setListFormOpen] = useState(false);
   const handleCreateList = () => {
     setListFormOpen(true);
@@ -36,6 +36,7 @@ export default () => {
       {islistFormOpen && (
         <View style={styles.btn}>
           <ListForm
+            navigation={navigation}
             islistFormOpen={islistFormOpen}
             setListFormOpen={setListFormOpen}
           />

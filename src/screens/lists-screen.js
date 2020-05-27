@@ -3,13 +3,13 @@ import { ImageBackground, StyleSheet, SafeAreaView, Text } from 'react-native';
 
 import Createlist from '../components/create-list';
 
-export default () => {
+export default ({navigation}) => {
   return (
     // <ImageBackground
     //   source={require('../assets/imgs/background.png')}
     //   style={styles.container}>
     <SafeAreaView>
-      <Createlist />
+      <Createlist navigation={navigation}/>
     </SafeAreaView>
     //  </ImageBackground>
   );
