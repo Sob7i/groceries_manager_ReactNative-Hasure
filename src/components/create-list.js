@@ -48,6 +48,7 @@ export default ({ navigation }) => {
 
 const styles = StyleSheet.create({
   btn: {
+    // backgroundColor: 'gold',
     width: ' 80%',
     top: '30%',
     marginBottom: '5%',
