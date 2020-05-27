@@ -12,7 +12,8 @@ export default ({ setListFormOpen, navigation }) => {
     // setText('');
     // submit(text);
     Keyboard.dismiss();
-    navigation.navigate('CreatedlistScreen')
+    navigation.navigate('My lists');
+    setTimeout(() => setListFormOpen(false),350);
   };
   const handleCancelList = () => setListFormOpen(false);
 
@@ -22,7 +23,7 @@ export default ({ setListFormOpen, navigation }) => {
         value={global.text}
         onChangeText={(txt) => setGlobal({text: txt})}
         onSubmitEditing={submitMessage}
-        maxLength={80}
+        maxLength={40}
         autoFocus
         editable
       />
