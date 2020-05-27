@@ -1,72 +1,76 @@
 import React from 'react';
-import { StyleSheet, Button, TextInput, Keyboard, View } from 'react-native';
-// import { Form, Item, Input, Text } from 'native-base';
+import { StyleSheet, Keyboard, View } from 'react-native';
+import { Text, Button } from 'native-base';
 
 import StyledTextInput from '../elements/text-input';
 
-export default ({ islistFormOpen, setListFormOpen }) => {
-  const [text, setText] = React.useState('name');
+export default ({ setListFormOpen, navigation }) => {
+  const [text, setText] = React.useState('Type here..');
   const submitMessage = () => {
     setText('');
     // submit(text);
     Keyboard.dismiss();
+    navigation.navigate('CreatedlistScreen')
+    console.log('navigation',navigation)
     console.log('text', text);
   };
-  const handleCancelList = () => {
-    setListFormOpen(false);
-  };
+  const handleCancelList = () => setListFormOpen(false);
+
   return (
     <View style={styles.container}>
-      {/* <Form> */}
       <StyledTextInput
-        style={styles.composeText}
         value={text}
         onChangeText={(txt) => setText(txt)}
         onSubmitEditing={submitMessage}
-        maxLength={60}
+        maxLength={80}
+        autoFocus
+        editable
       />
-      <Button onPress={submitMessage} title='Send' />
-      {/* </Form> */}
-      <Button
-        // onPress={handleCreateList}
-        title='Create'
-        color='#841584'
-        // style={styles.btn}
-        accessibilityLabel='Create'
-      />
-      <Button
-        onPress={handleCancelList}
-        title='Cancel'
-        color='#841584'
-        // style={styles.btn}
-        accessibilityLabel='Cancel'
-      />
+      <View style={styles.optionsBtns}>
+        <Button
+          dark
+          onPress={() => navigation.navigate('CreatedlistScreen')}
+          style={styles.btn}
+          accessibilityLabel='Create'
+        >
+          <Text>Create</Text>
+        </Button>
+        <Button
+          light
+          onPress={handleCancelList}
+          style={styles.btn}
+          accessibilityLabel='Cancel'
+        >
+          <Text>Cancel</Text>
+        </Button>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  btn: {
-    color: 'black',
-    backgroundColor: '#F5FCFF',
-  },
   container: {
-    // flex: 1,
-    // justifyContent: 'flex-start',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+    flex: 2,
+    width: '100%',
+    marginTop: '50%',
   },
-  composeText: {
-    // flex: 0.5,
-    // justifyContent: 'center',
-    // width: '80%',
-    // margin: 'auto',
-    // paddingHorizontal: 10,
-    // alignItems: 'center',
-    // height: 40,
-    // backgroundColor: 'white',
-    // borderColor: '#979797',
-    // borderStyle: 'solid',
-    // borderWidth: 1,
+  btn: {
+    justifyContent: 'center',
+    width: '50%',
+    marginTop: '10%',
+    marginRight: '2%',
   },
+  optionsBtns: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  // baseText: {
+  //   marginBottom: '20%',
+  //   marginTop: '10%',
+  //   color: 'red',
+  //   fontWeight: 'bold',
+  //   fontFamily: "Cochin",
+  //   fontSize: 40,
+  // },
 });

@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Platform, StyleSheet, StatusBar, View } from 'react-native';
+import { Platform, StyleSheet, StatusBar, View,Button } from 'react-native';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import ListsScreen from './src/screens/lists-screen'
+import ListsScreen from './src/screens/lists-screen';
+import CreatedlistScreen from './src/screens/created-list';
 
 const Stack = createStackNavigator();
 
@@ -22,29 +23,31 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#006655',
+            backgroundColor: 'grey'
           },
-          headerTintColor: '#fff',
+          headerTintColor: '#ffffff',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
         }}>
         <Stack.Screen name="Createlist" component={ListsScreen} />
-        {/* <Stack.Screen
-          name="ChatViewScreen"
-          component={ChatViewScreen}
-          options={({route, navigation}) => ({
-            title: route.params?.title,
-            headerLeft: () => (
-              <Icon
-                name="chevron-left"
-                size={40}
-                color="#ffffff"
-                onPress={() => navigation.goBack()}
-              />
-            ),
-          })}
-        /> */}
+        {/* <Stack.Screen name="CreatedlistScreen" component={CreatedlistScreen} /> */}
+        <Stack.Screen
+          name="CreatedlistScreen"
+          component={CreatedlistScreen}
+          // options={({route, navigation}) => ({
+          //   title: route.params?.title,
+          //   headerLeft: () => (
+          //     <Button
+          //       // name="chevron-left"
+          //       title='>'
+          //       size={40}
+          //       color="#ffffff"
+          //       onPress={() => navigation.goBack()}
+          //     />
+          //   ),
+          // })}
+        />
       </Stack.Navigator>
     </>
   </NavigationContainer>
