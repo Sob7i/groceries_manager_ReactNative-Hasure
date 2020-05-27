@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button } from 'react-native';
-import { Header, View } from 'native-base';
+import { StyleSheet, FlatList } from 'react-native';
+import { View, Button, Text } from 'native-base';
 
 import ListForm from './list-form';
 
@@ -11,20 +11,35 @@ export default () => {
     console.log('worked!');
   };
   return (
-    <View>
-      {/* <Header /> */}
-      <Button
-        onPress={handleCreateList}
-        title='+ create a new list'
-        color='#841584'
-        style={styles.btn}
-        accessibilityLabel='Learn more about this purple button'
-      />
+    <View style={styles.container}>
+      {!islistFormOpen && (
+        <>
+          <Button
+            light
+            onPress={handleCreateList}
+            style={styles.btn}
+            accessibilityLabel='Learn more about this purple button'
+          >
+            <Text>+ Create a check list</Text>
+          </Button>
+          <Button
+            dark
+            onPress={handleCreateList}
+            style={styles.btn}
+            accessibilityLabel='Learn more about this purple button'
+          >
+            <Text>+ Create a groceries list</Text>
+          </Button>
+        </>
+      )}
+
       {islistFormOpen && (
-        <ListForm
-          islistFormOpen={islistFormOpen}
-          setListFormOpen={setListFormOpen}
-        />
+        <View style={styles.btn}>
+          <ListForm
+            islistFormOpen={islistFormOpen}
+            setListFormOpen={setListFormOpen}
+          />
+        </View>
       )}
     </View>
   );
@@ -32,13 +47,29 @@ export default () => {
 
 const styles = StyleSheet.create({
   btn: {
-    color: 'black',
-    backgroundColor: '#F5FCFF',
+    width: ' 80%',
+    top: '30%',
+    marginBottom: '5%',
+    justifyContent: 'center',
   },
   container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  }
+  },
 });
+
+/*
+    {
+      <>
+        <Text>Recently created lists</Text>
+          <FlatList
+          style={styles.container}
+        data={messages}
+        renderItem={({item}) => <Message key={item.id} {...item} />}
+        keyExtractor={(item, index) => `message-${index}`}
+        /> 
+      </>
+    }
+*/
