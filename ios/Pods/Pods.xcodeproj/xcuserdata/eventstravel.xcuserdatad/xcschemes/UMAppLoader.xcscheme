@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C452F579644C83E8D8E36EC24A9BBD46"
-               BuildableName = "libUMAppLoader.a"
+               BuildableName = "UMAppLoader.framework"
                BlueprintName = "UMAppLoader"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CF4D9052577C85B6B8C4E957332626B"
-               BuildableName = "libEXKeepAwake.a"
+               BuildableName = "EXKeepAwake.framework"
                BlueprintName = "EXKeepAwake"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

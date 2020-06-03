@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Keyboard, View } from 'react-native';
 import { Text, Button } from 'native-base';
 
@@ -6,27 +6,29 @@ import StyledTextInput from '../elements/text-input';
 import GlobalState from '../helpers/global-state';
 
 export default ({ setListFormOpen, navigation }) => {
-  const [global, setGlobal] = useContext(GlobalState)
+  const [global, setGlobal] = useContext(GlobalState);
 
   const submitMessage = () => {
     // setText('');
     // submit(text);
     Keyboard.dismiss();
     navigation.navigate('My lists');
-    setTimeout(() => setListFormOpen(false),350);
+    setTimeout(() => setListFormOpen(false), 350);
   };
   const handleCancelList = () => setListFormOpen(false);
 
   return (
     <View style={styles.container}>
-      <StyledTextInput
-        value={global.text}
-        onChangeText={(txt) => setGlobal({text: txt})}
-        onSubmitEditing={submitMessage}
-        maxLength={40}
-        autoFocus
-        editable
-      />
+      <View style={{ marginBottom: '20%' }}>
+        <StyledTextInput
+          value={global.text}
+          onChangeText={(txt) => setGlobal({ text: txt })}
+          onSubmitEditing={submitMessage}
+          maxLength={40}
+          autoFocus
+          editable
+        />
+      </View>
       <View style={styles.optionsBtns}>
         <Button
           dark
@@ -51,7 +53,7 @@ export default ({ setListFormOpen, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     width: '100%',
     marginTop: '50%',
   },

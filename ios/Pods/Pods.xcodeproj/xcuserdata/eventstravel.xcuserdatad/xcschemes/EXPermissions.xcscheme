@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0A72FB88825FDC7D301C9DD1F8F96824"
-               BuildableName = "libEXPermissions.a"
+               BuildableName = "EXPermissions.framework"
                BlueprintName = "EXPermissions"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
